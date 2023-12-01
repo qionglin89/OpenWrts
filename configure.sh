@@ -1,11 +1,16 @@
 #!/bin/bash
 # Modify default system settings
 
-# 修改默认IP为192.168.124.1
-sed -i 's/192.168.1.1/192.168.124.1/g' package/base-files/files/bin/config_generate 
+# 修改默认IP为192.168.124.6
+sed -i 's/192.168.1.1/192.168.124.6/g' package/base-files/files/bin/config_generate 
 
-# Hello World
+# fw876/helloworld
+sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+
+# Add a feed source
 echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
+#echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+#echo 'src-git small https://github.com/kenzok8/small' >>feeds.conf.default
 
 # luci-theme-infinityfreedom
 echo 'src-git infinityfreedom https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git' >>feeds.conf.default
